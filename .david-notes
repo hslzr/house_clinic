@@ -1,0 +1,31 @@
+Validations -- adds checks we don't want to do manually. E.g.:
+
+    class Patient
+        validates :username, presence: true 
+    function ^     ^ attribute   ^ type of validation 
+
+other validation types: length, 
+                            ^ e.g.: length: {miniumum: 4}
+
+can use conditionals with if: -> [anonymous function]
+*procs/lambdas
+
+rails console command: patient.valid? -- returns true/false. checks locally; doesn't interact w/ db
+
+
+
+In ruby, object (array where all keys have values)
+
+models are classes; these are the type that can have Validations
+
+
+Callbacks
+
+before_save :announce_save
+^ keyword     ^method to execute
+
+instead of calling method, can call block
+
+see rails guides for order in which they execute
+
+**don't overuse them

@@ -6,6 +6,14 @@ class Patient < ApplicationRecord
     presence: true,
     length: { minimum: 4 }
 
+  validates :age, numericality: {greater_than: 0}
+
+  validates :parent_id, presence: true, unless: :older_than_21?
+
+  def older_than_21?
+    age > 21
+  end
+
   before_save :announce_save
   after_save :log_save
 

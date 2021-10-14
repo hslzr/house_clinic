@@ -1,0 +1,13 @@
+Validate for:
+
+1. Patient model
+    - age is positive
+    - patients are older than 21, else they have a parent (parent_id can be column in patient table)
+
+2. Consultation model
+    - start_time is before end_time
+    - start_time is after the current time right now
+    - both start_time and end_time are present
+
+3. Doctor model
+    - whichever validations would make sense per business logic
