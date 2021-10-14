@@ -1,7 +1,6 @@
 class Patient < ApplicationRecord
   belongs_to :doctor # <- MANDATORY FIELD
-  belongs_to(:doctor)
-  has_many(:consultations) #customary belongs_to before has_many
+  has_many :consultations #customary belongs_to before has_many
 
   validates :username,
     presence: true,
@@ -23,5 +22,4 @@ class Patient < ApplicationRecord
   def log_save
     puts "I just saved patient #{id}"
   end
-
 end
