@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Patient, type: :model do
-
   describe 'Patient must have a name' do
     it 'fails if no username is provided' do
       patient = Patient.new(doctor_id: 1, age: 24)
@@ -22,6 +21,20 @@ RSpec.describe Patient, type: :model do
 
       expect(patient).to be_valid
       expect(patient.errors).to be_empty
+    end
+  end
+
+  describe 'Patient age' do
+    it 'is greater than 0' do
+      skip
+    end
+
+    it 'is less than 99' do
+      skip
+    end
+
+    it 'requires parent if age is less than 21' do
+      skip
     end
   end
 end
