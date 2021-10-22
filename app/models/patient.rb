@@ -1,12 +1,14 @@
 class Patient < ApplicationRecord
-  belongs_to :doctor # <- MANDATORY FIELD
+  #belongs_to :doctor # <- MANDATORY FIELD
   has_many :consultations #customary belongs_to before has_many
 
   validates :username,
     presence: true,
     length: { minimum: 4 }
 
-  validates :age, numericality: {greater_than: 0}
+  validates :age,
+    presence: true,
+    numericality: {greater_than: 0}
 
   validates :parent, presence: true, unless: :older_than_20?
 
