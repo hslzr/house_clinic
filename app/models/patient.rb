@@ -8,10 +8,10 @@ class Patient < ApplicationRecord
 
   validates :age, numericality: {greater_than: 0}
 
-  validates :parent_id, presence: true, unless: :older_than_21?
+  validates :parent, presence: true, unless: :older_than_20?
 
-  def older_than_21?
-    age > 21
+  def older_than_20?
+    age >= 21
   end
 
   before_save :announce_save

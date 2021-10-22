@@ -2,16 +2,18 @@ class Consultation < ApplicationRecord
     belongs_to :doctor # indicates that method must link to db consult
     belongs_to :patient 
 
-validates: :start_time, presence: true
-validates: :end_time, presence: true
+    validates :start_time, :end_time, presence: true
 
-validates :valid_start_end_times?
-validates :start_time_after_now?
+    validate :valid_start_end_times?
+    validate :start_time_after_now?
 
-def valid_start_end_times?
-    start.time.before? end_time
-end
+    def valid_start_end_times?
+       return if start_time.before? end_time 
+       errors[:start_time] << 'start_time is not before end_time'
+    end
 
-def start_time_after_now?
-    start_time.after? DateTime.now
+    def start_time_after_now?
+      return if start_time.after? DateTime.now
+      errors[:start_time] << "start_time is not before current time"
+    end
 end
