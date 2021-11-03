@@ -26,15 +26,33 @@ RSpec.describe Patient, type: :model do
 
   describe 'Patient age' do
     it 'is greater than 0' do
-      skip
+      patient = Patient.new(age: 0, username: 'Test', parent: 'Test_parent')
+      expect(patient).not_to be_valid
+      expect(patient.errors.full_messages).to include("Age must be greater than 0")
+    
+      valid_patient = Patient.new(age: 30, username: 'Test')
+      expect(valid_patient).to be_valid
     end
 
     it 'is less than 99' do
-      skip
+      patient = Patient.new(age: 100, username: 'Test')
+      expect(patient).not_to be_valid
+      expect(patient.errors.full_messages).to include("Age must be less than 99")
+    
+      valid_patient = Patient.new(age: 30, username: 'Test')
+      expect(valid_patient).to be_valid
     end
 
     it 'requires parent if age is less than 21' do
-      skip
+      patient = Patient.new(age: 15, username: 'Test')
+      expect(patient).not_to be_valid
+      expect(patient.errors.full_messages).to include("Parent can't be blank")
+    
+      valid_patient = Patient.new(age: 15, username: 'Test', parent: 'test parent')
+      expect(valid_patient).to be_valid
+
+      valid_patient = Patient.new(age: 25, username: 'Test')
+      expect(valid_patient).to be_valid
     end
   end
 end

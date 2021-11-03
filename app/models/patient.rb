@@ -8,7 +8,7 @@ class Patient < ApplicationRecord
 
   validates :age,
     presence: true,
-    numericality: {greater_than: 0}
+    numericality: {greater_than: 0, less_than: 99}
 
   validates :parent, presence: true, unless: :older_than_20?
 
