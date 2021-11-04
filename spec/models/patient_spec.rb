@@ -25,7 +25,7 @@ RSpec.describe Patient, type: :model do
   end
 
   describe 'Patient age' do
-    it 'is greater than 0' do
+    it 'passes if age is greater than 0' do
       patient = Patient.new(age: 0, username: 'Test', parent: 'Test_parent')
       expect(patient).not_to be_valid
       expect(patient.errors.full_messages).to include("Age must be greater than 0")
@@ -34,7 +34,7 @@ RSpec.describe Patient, type: :model do
       expect(valid_patient).to be_valid
     end
 
-    it 'is less than 99' do
+    it 'passes if age is less than 99' do
       patient = Patient.new(age: 100, username: 'Test')
       expect(patient).not_to be_valid
       expect(patient.errors.full_messages).to include("Age must be less than 99")
