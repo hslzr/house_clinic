@@ -19,7 +19,7 @@ RSpec.describe Doctor, type: :model do
   end
 end
 
-  describe 'presentation' do
+  describe '.presentation' do
     it 'passes if presentation returns license number and name' do
     doctor = Doctor.new(name: "Bob Saget", license_number: 3)
 
