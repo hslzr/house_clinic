@@ -12,14 +12,15 @@ RSpec.describe Doctor, type: :model do
   
   describe 'doctor must have a unique license number' do
     it 'passes if license number is unique' do
-      doctor1 = Doctor.new(license_number: 1)
-      doctor2 = Doctor.new(license_number: 1)
+      doctor1 = Doctor.create(name: "Bill", license_number: 1)
+      doctor2 = Doctor.create(name: "Jim", license_number: 1)
 
       expect(doctor2).not_to be_valid
+      expect(doctor2.errors.full_messages).to include("License number has already been taken")
   end
 end
 
-  describe '.presentation' do
+  describe '#presentation' do
     it 'passes if presentation returns license number and name' do
     doctor = Doctor.new(name: "Bob Saget", license_number: 3)
 

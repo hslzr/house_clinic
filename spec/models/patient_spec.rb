@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Patient, type: :model do
-  describe 'Patient must have a name' do
+  describe 'Patient #name' do
     it 'fails if no username is provided' do
       patient = Patient.new(doctor_id: 1, age: 24)
 
@@ -24,33 +24,41 @@ RSpec.describe Patient, type: :model do
     end
   end
 
-  describe 'Patient age' do
-    it 'passes if age is greater than 0' do
+  describe 'Patient #age' do
+    it 'fails if age is less than 1' do
       patient = Patient.new(age: 0, username: 'Test', parent: 'Test_parent')
       expect(patient).not_to be_valid
       expect(patient.errors.full_messages).to include("Age must be greater than 0")
-    
-      valid_patient = Patient.new(age: 30, username: 'Test')
-      expect(valid_patient).to be_valid
     end
 
-    it 'passes if age is less than 99' do
+    it 'passes if age is greater than 0' do 
+      patient = Patient.new(age: 30, username: 'Test')
+      expect(patient).to be_valid
+      end
+
+    it 'fails if age is 99 or greater' do
       patient = Patient.new(age: 100, username: 'Test')
       expect(patient).not_to be_valid
       expect(patient.errors.full_messages).to include("Age must be less than 99")
-    
-      valid_patient = Patient.new(age: 30, username: 'Test')
-      expect(valid_patient).to be_valid
+    end
+ 
+    it 'passes if age is less than 99' do
+      patient = Patient.new(age: 30, username: 'Test')
+      expect(patient).to be_valid
     end
 
-    it 'requires parent if age is less than 21' do
+    it 'fails if age is less than 21 and no parent exists' do
       patient = Patient.new(age: 15, username: 'Test')
       expect(patient).not_to be_valid
       expect(patient.errors.full_messages).to include("Parent can't be blank")
-    
+    end
+
+    it 'passes if age is less than 21 and a parent does exist' do
       valid_patient = Patient.new(age: 15, username: 'Test', parent: 'test parent')
       expect(valid_patient).to be_valid
-
+    end
+    
+    it 'passes if age is greater than 21 and a parent does not exist' do
       valid_patient = Patient.new(age: 25, username: 'Test')
       expect(valid_patient).to be_valid
     end
