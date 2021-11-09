@@ -13,9 +13,7 @@ RSpec.describe Patient, type: :model do
     it { is_expected.to validate_numericality_of(:age)}
     it { is_expected.to validate_inclusion_of(:age).
           in_range(1..99).
-        }
-
-    
+        }   
 
   # it 'fails if no username is provided' do
     #   patient = Patient.new(doctor_id: 1, age: 24)
