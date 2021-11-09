@@ -8,8 +8,8 @@ class Consultation < ApplicationRecord
     validate :start_time_after_now?
 
     def valid_start_end_times?
-       return if start_time.before? end_time 
-       errors[:start_time] << 'start_time is not before end_time'
+      return if start_time.before? end_time 
+      errors[:start_time] << 'start_time is not before end_time'
     end
 
     def start_time_after_now?
