@@ -13,6 +13,7 @@ class Patient < ApplicationRecord
   validates :parent, presence: true, unless: :older_than_20?
 
   def older_than_20?
+    return unless age
     age >= 21
   end
 
