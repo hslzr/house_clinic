@@ -4,12 +4,24 @@
     <title>HouseClinic</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <h1>House Clinic</h1>
+      <p>A <a href="https://github.com/DavidUf11">David Ufberg</a> and <a href="https://github.com/hslzr/">Salazar</a> venture to explore Rails</p>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
+    <footer>
+      <p>Have fun.</p>
+    </footer>
   </body>
 </html>
