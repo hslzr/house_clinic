@@ -1,0 +1,15 @@
+<h1>Editing <%= @patient.username %></h1>
+
+<%= form_for @patient do |f| %>
+  <p>
+    <label>Username</label><br />
+    <%= f.text_field :username %>
+  </p>
+
+  <p>
+  <label>age</label><br />
+    <%= f.text_field :age %>
+  </p>
+
+  <p><%= f.submit 'SAVE' %></p>
+<% end %>
