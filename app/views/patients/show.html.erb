@@ -1,0 +1,7 @@
+<p id="notice"><%= notice %></p>
+
+
+<h1><%= @patient.username %>, <%= @patient.age %></h1>
+
+<%= link_to 'Edit', edit_patient_path(@patient) %> |
+<%= link_to 'Back', patients_path %>
