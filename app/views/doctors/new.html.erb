@@ -1,0 +1,18 @@
+<h1>New Doctor Registration</h1>
+
+<%= form_for @doctor do |f| %>
+    <p>
+        <label>Name</label></br>
+        <%= f.text_field :name %>
+    </p>
+    
+    <p>
+        <label>License Number</label></br>
+        <%= f.text_field :license_number %>
+    </p>
+
+    <p>
+        <%= f.submit 'Submit New Doctor' %>
+    </p>
+
+<% end %>
