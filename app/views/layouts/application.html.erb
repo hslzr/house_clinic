@@ -16,6 +16,12 @@
     <header>
       <h1>House Clinic</h1>
       <p>A <a href="https://github.com/DavidUf11">David Ufberg</a> and <a href="https://github.com/hslzr/">Salazar</a> venture to explore Rails</p>
+      <nav>
+        <%= link_to "Home", root_path %>
+        <%= link_to "Doctors", doctors_path %>
+        <%= link_to "Patients", patients_path %>
+        <%= link_to "Medicines", medicines_path %>
+      </nav>
     </header>
     <main>
       <% # This is where our views content goes %>
