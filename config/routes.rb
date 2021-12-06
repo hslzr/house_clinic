@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  resources :medicines
   root to: 'pages#index'
+
+  resources :medicines
+  resources :consultations
+  resources :doctors
+  resources :patients
 
   get '/about', to: 'pages#about'
 
-  resources :doctors
-  resources :patients
 end

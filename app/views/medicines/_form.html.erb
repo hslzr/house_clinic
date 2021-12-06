@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= form.label :unit %>
-    <%= form.text_field :unit %>
+    <%= select(:medicine, :unit, [["mG", "mg"],["mL", "ml"]]) %>
   </div>
 
   <div class="actions">
