@@ -60,7 +60,7 @@ class ConsultationsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def consultation_params
       params.require(:consultation)
-        .pemit(:doctor_id, :patient_id,
+        .permit(:doctor_id, :patient_id,
                :start_time, :summary, :notes)
     end
 end
