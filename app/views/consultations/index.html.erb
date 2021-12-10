@@ -5,7 +5,9 @@
 <table>
   <thead>
     <tr>
-      <th>Consultations</th>
+      <th>Patient</th>
+      <th>Doctor</th>
+      <th>Start Time</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -13,7 +15,9 @@
   <tbody>
     <% @consultations.each do |consultation| %>
       <tr>
-        <td><%= "consult here"%></td>
+        <td><%= Patient.find(consultation.patient_id).username %></td>
+        <td><%= Doctor.find(consultation.doctor_id).name %></td>
+        <td><%= consultation.start_time.to_s(:long_ordinal) %></td>
         <td><%= link_to 'Show', consultation %></td>
         <td><%= link_to 'Edit', edit_consultation_path(consultation) %></td>
         <td><%= link_to 'Destroy', consultation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
