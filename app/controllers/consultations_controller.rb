@@ -3,7 +3,7 @@ class ConsultationsController < ApplicationController
 
   # GET /consultations or /consultations.json
   def index
-    @consultations = Consultation.all
+    @consultations = Consultation.includes(:doctor, :patient).all
   end
 
   # GET /consultations/1 or /consultations/1.json
