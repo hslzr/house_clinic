@@ -1,4 +1,26 @@
 <p id="notice"><%= notice %></p>
 
+<h1>Consultation on <%= @consultation.start_time.to_s(:long_ordinal) %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Patient</th>
+      <th>Doctor</th>
+      <th>Start Time</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  
+      <tr>
+        <td><%= Patient.find(@consultation.patient_id).username %></td>
+        <td><%= Doctor.find(@consultation.doctor_id).name %></td>
+        <td><%= @consultation.start_time.to_s(:long_ordinal) %></td>
+      </tr>
+  
+  </tbody>
+</table>
+
 <%= link_to 'Edit', edit_consultation_path(@consultation) %> |
 <%= link_to 'Back', consultations_path %>
